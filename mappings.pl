@@ -20,7 +20,7 @@ while (my $row = $csv->getline($fh)) {
 
 	$old =~ s/^https*:\/\/$server_name//;
 	if ($status =~ "301") {
-		print "  rewrite $old $new permanent\n";
+		print "  rewrite $old $new permanent;\n";
 	} else {
 		print "  location $old { return $status; }\n";
 	}
