@@ -2,7 +2,7 @@
 #
 #
 www.direct.gov.uk:	mappings.csv mappings.pl
-	mappings.pl > $@
+	./mappings.pl > $@
 
 # download mappings from Migratorator
 # mappings.csv:
