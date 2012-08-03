@@ -13,6 +13,8 @@ print "  server_name $server_name;\n";
 
 open my $fh, "<:encoding(utf8)", "mappings.csv" or die "mappings.csv: $!";
 
+my $titles = $csv->getline($fh);
+
 while (my $row = $csv->getline($fh)) {
 
         #Title,Old Url,New Url,Status,Notes,Group,Name,Whole Tag
