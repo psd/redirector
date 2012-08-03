@@ -21,8 +21,10 @@ while (my $row = $csv->getline($fh)) {
 	$old =~ s/^https*:\/\/$server_name//;
 	if ($status =~ "301") {
 		print "  rewrite $old $new permanent;\n";
-	} else {
+	} elsif ($status =~ /^\d{3}$/) {
 		print "  location $old { return $status; }\n";
+	} else {
+		print  "# invalid status for $old\n";
 	}
 }
 
