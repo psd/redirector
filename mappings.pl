@@ -6,10 +6,9 @@ use Data::Dumper;
 
 my $csv = Text::CSV->new({ binary => 1 });
 
-my $server_name = "www.direct.gov.uk";
+my $server_name = @ARGV[0];
 
-open my $fh, "<:encoding(utf8)", "mappings.csv" or die "mappings.csv: $!";
-
+my $fh = *STDIN;
 my $titles = $csv->getline($fh);
 
 while (my $row = $csv->getline($fh)) {
@@ -28,4 +27,3 @@ while (my $row = $csv->getline($fh)) {
 }
 
 $csv->eof or $csv->error_diag();
-close $fh;

@@ -1,8 +1,10 @@
 #!/bin/bash
 
-echo "server {"
-echo "  server_name $1"
+server_name="$1"
 
-mappings.pl | sort
+echo "server {"
+echo "  server_name $server_name"
+
+mappings.pl $server_name | sort
 
 echo "}"

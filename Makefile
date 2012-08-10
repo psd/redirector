@@ -1,7 +1,10 @@
 all::	www.direct.gov.uk
 
+#
+#  build mappings for www.direct.gov.uk
+#
 www.direct.gov.uk:	mappings.csv mappings.pl mappings.sh
-	./mappings.sh www.direct.gov.uk < mappings.csv > $@
+	./mappings.sh $@ < mappings.csv > $@
 
 # download mappings from Migratorator
 mappings.csv:
