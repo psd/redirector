@@ -1,11 +1,11 @@
-all::	testmappings www.direct.gov.uk
+all::	www.direct.gov.uk
 
-www.direct.gov.uk:	mappings.csv mappings.pl
-	./mappings.pl > $@
+www.direct.gov.uk:	mappings.csv mappings.pl mappings.sh
+	./mappings.sh www.direct.gov.uk < mappings.csv > $@
 
 # download mappings from Migratorator
-# mappings.csv:
-# curl "https://migratorator.production.alphagov.co.uk/mappings/filter/status:closed.csv" > mappings.csv
+mappings.csv:
+	curl "https://${MIGRATORATOR_AUTH}@migratorator.production.alphagov.co.uk/mappings/filter/status:closed" > $@
 
 testmappings:
 	mkdir -p testmappings
