@@ -22,7 +22,7 @@ while (my $row = $csv->getline($fh)) {
 
 	$old =~ s/^https*:\/\/$server_name//;
 	if ($status =~ "301") {
-		print "  rewrite $old $new permanent;\n";
+		print "  location $old { add_header Location: $new; return 301; }\n";
 	} elsif ($status =~ /^\d{3}$/) {
 		print "  location $old { return $status; }\n";
 	} else {

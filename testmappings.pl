@@ -31,7 +31,7 @@ for (my $n = 0; $n < $nrows; $n++) {
 		;
 
 	if ($gone && $n % $gone) {
-		print "  rewrite $old $new permanent;\n";
+		print "  location $old { add_header Location: $new; return 301; }\n";
 	} else {
 		print "  location $old { return 410; }\n";
 	}
