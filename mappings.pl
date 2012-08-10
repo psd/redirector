@@ -17,7 +17,7 @@ while (my $row = $csv->getline($fh)) {
 	my ($title, $old, $new, $status, $notes, $group, $tag) = @$row;
 
 	$old =~ s/^https*:\/\/$server_name//;
-	if ($status =~ "301") {
+	if ($status =~ "301" && $new) {
 		print "  location $old { add_header Location: $new; return 301; }\n";
 	} elsif ($status =~ /^\d{3}$/) {
 		print "  location $old { return $status; }\n";
